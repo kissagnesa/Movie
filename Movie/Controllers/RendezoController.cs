@@ -38,7 +38,6 @@ namespace Movie.Controllers
                 try
                 {
                     Rendezo rendezo = JsonConvert.DeserializeObject<Rendezo>(Json);
-                    using (var ms=new MemoryStream())
   
                     return Ok("A rendező adatainak a módosítása sikeresen megtörtént.");
                 }
