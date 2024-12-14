@@ -31,14 +31,16 @@ namespace Movie.Controllers
 
         [HttpPut]
         //http?://localhost:xxxx/api/rendezo
-        public async Task<IActionResult> Put([FromForm] string Json)
+        public async Task<IActionResult> Put([FromForm] string Json, [FromForm] IFormFile indexKep, [FromForm] IFormFile kep)
         {
             using (var context = new MovieContext())
             {
                 try
                 {
                     Rendezo rendezo = JsonConvert.DeserializeObject<Rendezo>(Json);
-  
+                 
+                    context.Rendezos.Update(rendezo);
+                    await context.SaveChangesAsync();
                     return Ok("A rendező adatainak a módosítása sikeresen megtörtént.");
                 }
                 catch (Exception ex)
@@ -48,26 +50,10 @@ namespace Movie.Controllers
             }
         }
 
-        [HttpPost]
-        //http?://localhost:xxxx/api/film
-        public async Task<IActionResult> Post([FromForm] string Json)
-        {
-            using (var context = new MovieContext())
-            {
-                try
-                {
-                    Rendezo rendezo = JsonConvert.DeserializeObject<Rendezo>(Json);                 using (var ms = new MemoryStream())
-                   
-                    rendezo.Id = 0;                    
-                    context.Rendezos.Add(rendezo);
-                    await context.SaveChangesAsync();
-                    return Ok("Az új rendező felvétele sikeresen megtörtént.");
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(ex.Message);
-                }
-            }
+        
+
         }
+
     }
-}
+
+

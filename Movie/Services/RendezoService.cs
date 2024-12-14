@@ -26,7 +26,7 @@ namespace Movie.Services
             {
                 try
                 {
-                    var response = context.Rendezos.Include(r => r.Nev).Include(r => r.Nemzetiseg).Select(r => new RendezoDTO
+                    var response = context.Rendezos.Select(r => new RendezoDTO
                     {
                         Id = r.Id,
                         Nev = r.Nev,
