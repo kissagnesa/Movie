@@ -43,10 +43,10 @@ namespace Movie.Controllers
         public async Task<IActionResult> FilmKarbantartas(int id)
         {
             await Task.Delay(500);
-            Film film= FilmService.GetFilm(id);
+            Film film = FilmService.GetFilm(id);
             if (film == null)
             {
-                ViewBag.Film=new Film { Id=0,IndexKep=new byte[0],Kep=new byte[0] };
+                ViewBag.Film = new Film { Id = 0, IndexKep = new byte[0], Kep = new byte[0] };
             }
             else
             {

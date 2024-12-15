@@ -8,7 +8,7 @@ namespace Movie.Services
     {
         public static List<Rendezo> GetRendezok()
         {
-            using(var context=new MovieContext())
+            using (var context = new MovieContext())
             {
                 try
                 {
@@ -26,12 +26,12 @@ namespace Movie.Services
             {
                 try
                 {
-                    var response = context.Rendezos.Select(r => new RendezoDTO
+                    var response = context.Rendezos.Select(f => new RendezoDTO
                     {
-                        Id = r.Id,
-                        Nev = r.Nev,
-                        Nemzetiseg = r.Nemzetiseg,
-                        SzulDatum = r.SzulDatum,
+                        Id = f.Id,
+                        Nev = f.Nev,
+                        Nemzetiseg = f.Nemzetiseg,
+                        SzulDatum = f.SzulDatum,
                     }).ToList();
                     return response;
                 }
@@ -44,7 +44,8 @@ namespace Movie.Services
             }
         }
 
-            public static Rendezo GetRendezo(int id)
+
+        public static Rendezo GetRendezo(int id)
         {
             using (var context = new MovieContext())
             {
